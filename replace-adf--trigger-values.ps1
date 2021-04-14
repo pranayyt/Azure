@@ -43,7 +43,7 @@ foreach ($n in $json.resources){
 		$todaysDate = Get-Date 
 		if ($n.properties.type -like 'TumblingWindowTrigger' -and $n.type -notlike "Microsoft.DataFactory/factories/integrationRuntimes"){
 			foreach ($item in $getTumblingWindowTriggers) {
-				if ($n.name.Contains($item.Name)){
+				if ($n.name.ToLower().Contains($item.Name.ToLower())){
 					if ($item.Properties.StartTime -ne $n.properties.typeProperties.StartTime){
 
 						if ($item.RuntimeState -eq 'Started'){
